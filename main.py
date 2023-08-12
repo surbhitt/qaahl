@@ -5,20 +5,11 @@ import requests
 import bs4
 from sys import argv
 
+from classes import GraphNode
+from visualization import draw 
+
+
 base_url = ""
-
-class GraphNode:
-    url = ""
-    paths = []
-    def __init__(self, url="", paths=[]) -> None:
-        self.url = url
-        self.paths = paths
-
-    def rec(self) -> None:
-        pass
-    
-    def print_graph(self) -> None:
-        pass
 
 def make_req(url: str):
     try: 
@@ -92,7 +83,7 @@ def main():
         else:
              depth -= 1
              url_queue.appendleft([])
- 
+    draw(head) 
         
 if __name__ == "__main__":
     main()
