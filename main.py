@@ -5,12 +5,16 @@ import requests
 import bs4
 from sys import argv
 
+# ----------------------------------------------------------------- modules
 from classes import GraphNode
 from visualization import draw 
 
-
+# ----------------------------------------------------------------- global
 base_url = ""
+noted_links = set()
 
+# ----------------------------------------------------------------- function
+# make request to the url
 def make_req(url: str):
     try: 
          res = requests.get(url)
@@ -19,16 +23,7 @@ def make_req(url: str):
         print(f"[ERR] For {url=}:", err)
         return -1
 
-def build_url(url: str):
-    if not url:
-        print(f"DONT KNOW")
-        return (base_url)
-    if url.startswith("."):
-        print(f"adding %s" %(base_url+url[2:]))
-        return base_url+url[2:]
-    print(f"adding %s" %url)
-    return url
-
+# extracts the command line arguments
 def handle_args():
     if (len(argv) < 2):
         print("-- No link passed")
@@ -54,36 +49,46 @@ def handle_args():
 
     return base_url, flags
 
+# TODO: handle flags better and do something about it
 def handle_flags():
     pass
 
+# Entry Point ...
 def main():
-    global base_url
+    global base_url, noted_links
+    # extracting from commandline args
     base_url, flags = handle_args()
-    head = GraphNode(base_url)
-    url_queue = deque([[], [head]])
+    # creating the base_head of the graph
+    head_node = GraphNode(base_url)
+    
+    # =---> 
+    node_queue = deque([[], [head_node]])
     depth = int(flags["-d"])
-    while len(url_queue) !=0 and depth > 0:
-        cur_depth_q = url_queue.pop()
+
+    while len(node_queue) !=0 and depth > 0:
+        cur_depth_q = node_queue.pop()
+        # TODO: secure this check
         if len(cur_depth_q) == 0:
             print("broke cause the cur_depth_q was empty")
             break
-        cur_url = cur_depth_q.pop()
-        print(f"traversing         {cur_url.url=}")
-        res = make_req(cur_url.url)
+        cur_node = cur_depth_q.pop()
+        print(f"traversing         {cur_node.rel_path=}")
+        res = make_req(cur_node.rel_path)
         if (res == -1): continue
         res_txt = res.text
         res_parsed = bs4.BeautifulSoup(res_txt, 'html.parser')
         for anchor in res_parsed.find_all('a'):
-            constructed_url = build_url(anchor.get('href'))
-            cur_url.paths.append(GraphNode(constructed_url))
-            url_queue[0]+=cur_url.paths
+            link = anchor.get('href')
+            if link not in noted_links:
+                noted_links.add(link)
+                cur_node.paths.append(GraphNode(link))
+            node_queue[0]+=cur_node.paths
         if len(cur_depth_q) != 0:
-            url_queue.append(cur_depth_q)
+            node_queue.append(cur_depth_q)
         else:
              depth -= 1
-             url_queue.appendleft([])
-    draw(head) 
+             node_queue.appendleft([])
+    draw(head_node) 
         
 if __name__ == "__main__":
     main()

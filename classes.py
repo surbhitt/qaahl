@@ -1,11 +1,17 @@
 # classes only
 
 class GraphNode:
-    url = ""
+    # data members
+    rel_path = ""
     paths = []
-    def __init__(self, url="", paths=[]) -> None:
-        self.url = url
+    
+    # member functions
+    def __init__(self, rel_path="", paths=[]) -> None:
+        self.rel_path = rel_path
         self.paths = paths
+    
+    def __str__(self) -> str:
+        return f"{self.rel_path=} | {self.paths=}"
 
     def rec(self) -> None:
         pass
