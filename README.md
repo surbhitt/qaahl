@@ -4,9 +4,7 @@
 
 # Introduction
 
-Qaahl a simple webcrawler that can generate a graphical view of the crawled path. <br>
-More of a visualization of how various hyperlinks connect. A module to scrap the pages<br>crawled and to interact with the web.<br>
-Depth limited crawling. Multithreading to be implemented.
+Qaahl a simple webcrawler that can generate a graphical view of the crawled path. More of a visualization of how various hyperlinks connect. A module to scrap the pages crawled and to interact with the web. Depth limited crawling. Multithreading to be implemented.
 
 <p align="center">
 <img src="./assets/qaahl_screen.png">
