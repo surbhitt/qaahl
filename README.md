@@ -1,6 +1,6 @@
-<p align="center">
+
 <img src="https://raw.githubusercontent.com/surbhitt/qaahl/main/assets/qaahl.webp" width=25% height=25%>
-</p>
+
 
 # Introduction
 
