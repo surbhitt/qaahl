@@ -1,13 +1,13 @@
-
-<img src="https://raw.githubusercontent.com/surbhitt/qaahl/main/assets/qaahl.webp" width=25% height=25%>
-
+<p align="center">
+<img src="assets/qaahl.webp" width=25% height=25%>
+</p>
 
 # Introduction
 
 Qaahl a simple webcrawler that can generate a graphical view of the crawled path. More of a visualization of how various hyperlinks connect. A module to scrap the pages crawled and to interact with the web. Depth limited crawling. Multithreading to be implemented.
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/surbhitt/qaahl/main/assets/qaahl_screen.png">
+<img src="assets/qaahl_screen.png">
 </p>
 
 ### Libraries utilised
