@@ -18,8 +18,8 @@ Qaahl a simple webcrawler that can generate a graphical view of the crawled path
 # Run
 
 ```console
-pip install -r requirements.txt
-python3 main.py $URL $flags
+        pip install -r requirements.txt
+        python3 main.py $URL $flags
 ```
 
 Replace 
