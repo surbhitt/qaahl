@@ -2,15 +2,20 @@
 <img src="https://raw.githubusercontent.com/surbhitt/qaahl/main/assets/qaahl.webp" width=25% height=25%>
 </p>
 
+# Objective
+
+To develop an application capable of scrapping data from webpages and to provide visuals to assist the process through a GUI. Implementing a light weight multithreaded interactive application.
+
 # Introduction
 
-Qaahl a simple webcrawler that can generate a graphical view of the crawled path. More of a visualization of how various hyperlinks connect. A module to scrap the pages crawled and to interact with the web. Depth limited crawling. Multithreading to be implemented.
+Qaahl serves as a minimalist webcrawler providing the basic functionality of a scrapper. A lightweight graphical interface built using pygames.
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/surbhitt/qaahl/main/assets/qaahl_screen.png">
 </p>
 
-### Libraries utilised
+# Libraries utilised
+
 - Pygame
 - Requests
 - Beautiful Soup (Bs4)
@@ -22,6 +27,6 @@ Qaahl a simple webcrawler that can generate a graphical view of the crawled path
         python3 main.py $URL $flags
 ```
 
-Replace 
-- `$URL` with the link as the base url
-- `$flags` with flags e.g. -d 3 performs depth=3 traversal
+| `$URL`   | with the link as the base url                   |
+| -------- | ----------------------------------------------- |
+| `$flags` | with flags e.g. -d 3 performs depth=3 traversal |
