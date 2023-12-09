@@ -93,3 +93,9 @@ def main():
 if __name__ == "__main__":
     main()
 
+
+"""
+    TODO:
+        1) option to opt for single or multithread 
+        2) show info about the benchmark
+"""
